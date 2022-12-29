@@ -5,6 +5,8 @@ import {
   faPerson,
   faPlane,
   faTaxi,
+  faMoon,
+  faSun,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./header.css";
@@ -16,6 +18,7 @@ import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
+import { useEffect } from "react";
 
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
@@ -54,8 +57,28 @@ const Header = ({ type }) => {
     navigate("/hotels", { state: { destination, dates, options } });
   };
 
+const [theme, setTheme] = useState("light-theme")
+const t = document.getElementById("toggle-btn");
+const toggleTheme = ()=> {
+  if( theme === "dark-theme"){
+    setTheme('light-theme');
+
+  } else {
+    setTheme('dark-theme');
+  }
+}
+useEffect(() => {
+  document.body.className=theme;
+}, [theme]);
+
+const icon = theme === "dark-theme" ? faMoon : faSun;
+
   return (
     <div className="header">
+      <button class="toggle-btn" id="toggle-btn" onClick={()=> toggleTheme()}>
+        <FontAwesomeIcon icon={icon} id="dark-light" />
+
+      </button>
       <div
         className={
           type === "list" ? "headerContainer listMode" : "headerContainer"
@@ -90,7 +113,7 @@ const Header = ({ type }) => {
             </h1>
             <p className="headerDesc">
               Get rewarded for your travels – unlock instant savings of 10% or
-              more with a free Lamabooking account
+              more with a free SDB Trip Booking account
             </p>
             {!user && <button className="headerBtn">Sign in / Register</button>}
             <div className="headerSearch">
@@ -209,5 +232,7 @@ const Header = ({ type }) => {
     </div>
   );
 };
+
+
 
 export default Header;

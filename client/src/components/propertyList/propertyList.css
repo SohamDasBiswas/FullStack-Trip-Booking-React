@@ -21,11 +21,12 @@
 
 .pListTitles>h1{
   font-size: 18px;
-  color: #444;
+  color: var(--h2Title);
   text-transform: capitalize;
 }
 
 .pListTitles>h2{
   font-size: 14px;
   font-weight: 300;
+  color: var(--h2Title);
 }
