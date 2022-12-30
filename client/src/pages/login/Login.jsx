@@ -48,7 +48,7 @@ const Login = () => {
           onChange={handleChange}
           className="lInput"
         />
-        <button disabled={loading} onClick={handleClick} className="lButton">
+        <button onClick={handleClick} className="lButton">
           Login
         </button>
         {error && <span>{error.message}</span>}

@@ -2,13 +2,13 @@
     --heading: #003580;
     --blue-btn: #0071c2;
     --body: #fff;
-    --text: #000;
+    --text: #282B30;
     --h2Title: #444;
 }
 .dark-theme{
     --heading: #9900f8;
     --blue-btn: #c843d7;
-    --body: #131313;
+    --body: #282B30;
     --text: #fff;
     --h2Title: #fff;
 }

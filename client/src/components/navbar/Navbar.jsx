@@ -3,8 +3,17 @@ import logo from "../../img/logo.ico";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const signin = () => {
+  
+    navigate("/login");
+  };
+  const signout = () => {
+    navigate("/register");
+  };
 
   return (
     <div className="navbar">
@@ -17,8 +26,8 @@ const Navbar = () => {
         </Link>
         {user ? user.username : (
           <div className="navItems">
-            <button className="navButton">Register</button>
-            <button className="navButton">Login</button>
+            <button className="navButton"onClick={signout}>Register</button>
+            <button className="navButton" onClick={signin}>Login</button>
           </div>
         )}
       </div>
